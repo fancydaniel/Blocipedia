@@ -6,9 +6,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_url :notice => "Signed up!"
+      UserMailer.registration_confirmation(@user).deliver
+      redirect_to :root, notice: "Signed up!"
     else
-      render "new"
+      redirect_to :root
     end
   end
 

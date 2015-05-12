@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'welcome/about'
 
-  # root to: 'welcome#index'
-  root to: "users#new"
+  root to: 'welcome#index'
   resources :users
   resources :sessions
   resources :password_resets

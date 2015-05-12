@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
-  before_create { generate_token(auth_token) }
+  before_create { generate_token(:auth_token) }
 
   def self.authenticate(email, password)
     user = find_by_email(email)

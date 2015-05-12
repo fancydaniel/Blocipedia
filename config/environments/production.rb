@@ -87,14 +87,5 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
 
-  config.action_mailer.smtp_settings = {
-  address: "smtp.mandrillapp.com",
-  port: 587,
-  domain: "localhost:3000",
-  authentication: "plain",
-  enable_starttls_auto: true,
-  user_name: ENV["duribe8@gmail.com"],
-  password: ENV["YVhnbWhfRPIrCRaBz3FXhQ"]
-}
 
 end
