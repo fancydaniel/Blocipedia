@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       UserMailer.registration_confirmation(@user).deliver
       redirect_to :root, notice: "Signed up!"
     else
-      redirect_to :root
+      redirect_to sign_up_path, notice: "There was an error. Please try again."
     end
   end
 
