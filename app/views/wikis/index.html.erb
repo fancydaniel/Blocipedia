@@ -1,3 +1,6 @@
 <h1>My Wikis</h1>
 
-<p>Content to come ... </p>
+<% @wikis.each do |wiki| %>
+  <h3><%= link_to wiki.title, wiki %></h3>
+  <p><%= wiki.body %></p>
+<% end %>

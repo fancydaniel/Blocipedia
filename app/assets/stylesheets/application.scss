@@ -1,2 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.padding { /* padding for right nav element */
+  
+  padding-right: 8px;
+}
+
+body {
+  background-color: #F7F7F7;
+  padding-bottom: 70px;
+}
