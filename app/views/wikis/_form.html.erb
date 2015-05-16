@@ -1,10 +1,17 @@
-<%= form_for @wiki do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %><br />
+<div class="container", id="form">
+  <div class="row">
+    <div class="col-md-4">  </div>
+      <div class="col-md-8">
+        <div class="wrapper">
+        <%= form_for @wiki do |f| %>
+            <%= f.label :title, class: "label_ title_" %>
+            <%= f.text_field :title, class: "input text-field" %><br />
 
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-
-  <%= f.submit "Save" %>
-
+            <%= f.label :body, class: "label_ body_" %>
+            <%= f.text_area :body, class: "input text-area" %>
+            <br />
+            <%= f.submit "Save", class: "d_button" %>
+        </div>
+  </div>
+</div>
 <% end %>

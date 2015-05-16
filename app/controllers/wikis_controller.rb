@@ -30,6 +30,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     if @wiki.update(wiki_params)
       flash[:notice] = "Wiki was updated."
+      redirect_to @wiki
     else
       flash[:error] = "There was an error updating your wiki. Please try again."
       redirect_to @wiki

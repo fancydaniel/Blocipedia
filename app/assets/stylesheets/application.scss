@@ -1,6 +1,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,400,700);
+@import url(http://fonts.googleapis.com/css?family=Alegreya:400,700);
 
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+p {
+  font-family: 'Alegreya', Palatino, serif;
+  font-size: 1.15em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #3A4866;
+}
+
+.italic {
+  font-style: italic;
+  font-weight: lighter;
+}
 
 .padding { /* padding for right nav element */
   padding-right: 8px;
@@ -30,7 +49,134 @@ a:hover {
 
 }
 
-.vertical-align{
+/* ***** TABLE STYLES ***** */
+
+.vertical-align { 
   vertical-align: middle !important;
   padding-top: 18px !important;
+}
+
+table {
+  table-layout: fixed;  
+}
+
+.subject {
+  width: 60%;
+    font-variant: small-caps;
+  font-weight: 600;
+  font-size: 1.3em;
+}
+
+.secondary {
+  width: 20%; /* Width for Edit and Delete cells */
+  font-variant: small-caps;
+    font-weight: 600;
+  font-size: 1.3em;
+}
+
+tr:nth-child(even) {
+  background: rgba(181,190,209,0.52);
+}
+
+/* ***** TABLE STYLES ***** */
+
+.bottom {
+  padding-bottom:55px;
+}
+
+footer {
+  width: 100%;
+  height: 55px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background: rgba(247,247,247,1);
+  background: -moz-linear-gradient(top, rgba(247,247,247,1) 0%, rgba(75,94,133,0.36) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(247,247,247,1)), color-stop(100%, rgba(75,94,133,0.36)));
+  background: -webkit-linear-gradient(top, rgba(247,247,247,1) 0%, rgba(75,94,133,0.36) 100%);
+  background: -o-linear-gradient(top, rgba(247,247,247,1) 0%, rgba(75,94,133,0.36) 100%);
+  background: -ms-linear-gradient(top, rgba(247,247,247,1) 0%, rgba(75,94,133,0.36) 100%);
+  background: linear-gradient(to bottom, rgba(247,247,247,1) 0%, rgba(75,94,133,0.36) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#4b5e85', GradientType=0 );
+}
+
+/* ***** FORM STYLES ***** */
+
+#form {
+ /* margin: 0 auto;*/
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #3A4866;
+}
+
+.label_ {
+  display: inline-block;
+  vertical-align: text-top;
+  width: 50px;
+  font-size: 1.15em;
+  letter-spacing: 0.1em;
+  font-variant: small-caps;
+}
+
+.title_ {
+ vertical-align: top;
+ padding-top: 25px;
+}
+
+.body_ {
+  vertical-align: top;
+  padding-top: 54px;
+}
+
+.input {
+  width: 285px;
+  background-color: #F7F7F7;
+  border: none;
+  -webkit-box-shadow: inset 0px 0px 2px 1px rgba(59,74,105,0.5);
+  -moz-box-shadow: inset 0px 0px 2px 1px rgba(59,74,105,0.5);
+  box-shadow: inset 0px 0px 2px 1px rgba(59,74,105,0.5);
+  font-size: 1.3em;
+  padding: 5px;
+  border-radius: 5px;
+  vertical-align: text-bottom;
+}
+
+.text-field {
+  height: 37px;
+    margin-top: 8px;
+}
+.text-area {
+  height: 77px;
+}
+
+.d_button {
+  display: block;
+  margin: 0 auto;
+  width: 185px;
+  height: 30px;
+  margin-top: 2px;
+  margin-left: 107px;
+  border-radius: 8px;
+  border: none;
+
+ background-color: #f2f5f6; background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f5f6), to(#c8d7dc));
+ background-image: -webkit-linear-gradient(top, #f2f5f6, #c8d7dc);
+ background-image: -moz-linear-gradient(top, #f2f5f6, #c8d7dc);
+ background-image: -ms-linear-gradient(top, #f2f5f6, #c8d7dc);
+ background-image: -o-linear-gradient(top, #f2f5f6, #c8d7dc);
+ background-image: linear-gradient(to bottom, #f2f5f6, #c8d7dc);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f2f5f6, endColorstr=#c8d7dc);
+}
+
+.d_button:hover {
+  
+ background-image: -webkit-linear-gradient(top, #d4dee1, #a9c0c8);
+ background-image: -moz-linear-gradient(top, #d4dee1, #a9c0c8);
+ background-image: -ms-linear-gradient(top, #d4dee1, #a9c0c8);
+ background-image: -o-linear-gradient(top, #d4dee1, #a9c0c8);
+ background-image: linear-gradient(to bottom, #d4dee1, #a9c0c8);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#d4dee1, endColorstr=#a9c0c8);
+}
+
+.wrapper {
+  max-width: 420px;
 }
