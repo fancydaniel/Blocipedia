@@ -23,6 +23,28 @@ class WikisController < ApplicationController
   end
 
   def edit
+    @wiki = Wiki.find(params[:id])
+  end
+
+  def update
+    @wiki = Wiki.find(params[:id])
+    if @wiki.update(wiki_params)
+      flash[:notice] = "Wiki was updated."
+    else
+      flash[:error] = "There was an error updating your wiki. Please try again."
+      redirect_to @wiki
+    end
+  end
+
+  def destroy
+    @wiki = Wiki.find(params[:id])
+    if @wiki.destroy
+      flash[:notice] = "Wiki was deleted."
+      redirect_to @wiki
+    else
+      flash[:error] = "There was an error please try again."
+      redirect_to @wiki
+    end
   end
 
   private

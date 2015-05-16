@@ -1,12 +1,36 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 .padding { /* padding for right nav element */
-  
   padding-right: 8px;
 }
 
 body {
   background-color: #F7F7F7;
   padding-bottom: 70px;
+}
+
+a {
+  color: #4B5E85;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: #7794D1;
+}
+
+.noshow {
+  opacity: 0.0;
+  font-size: 0.5em;
+}
+
+.noshow:hover {
+  opacity: 0.7;
+
+}
+
+.vertical-align{
+  vertical-align: middle !important;
+  padding-top: 18px !important;
 }

@@ -1,6 +1,23 @@
-<h1>My Wikis</h1>
 
-<% @wikis.each do |wiki| %>
-  <h3><%= link_to wiki.title, wiki %></h3>
-  <p><%= wiki.body %></p>
-<% end %>
+<header>
+  <h1>My Wikis
+    <small class="noshow"><%= link_to "New", new_wiki_path %></small>
+  </h1> 
+</header>
+
+  <table class="table table-striped">
+    <tr>
+      <th>Subject</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% @wikis.each do |wiki| %>
+    <tr>
+      <td><h3><%= link_to wiki.title, wiki %></h3></td>
+      <td class="vertical-align"><%= link_to "Edit", edit_wiki_path(wiki)  %></td>
+      <td class="vertical-align"><%= link_to "Delete", [wiki], method: :delete, data:
+          { confirm: 'Are you sure you want to delete this wiki?' } %></td>
+    </tr>
+    <% end %>
+  </table>
+
