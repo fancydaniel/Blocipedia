@@ -8,6 +8,14 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   before_create { generate_token(:auth_token) }
 
+  # def admin?
+  #   role = 'admin'
+  # end
+
+  # def premium?
+  #   role = 'premium'
+  # end
+
   def self.authenticate(email, password)
     user = find_by_email(email)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)

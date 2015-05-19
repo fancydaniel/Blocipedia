@@ -1,0 +1,3 @@
+class WikiPolicy
+
+end

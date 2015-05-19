@@ -1,4 +1,6 @@
 class WikisController < ApplicationController
+  # before_filter :authorize, only: [:edit, :update]
+
   def index
     @wikis = Wiki.all
   end
@@ -13,6 +15,8 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new(wiki_params)
+
+
     if @wiki.save
       flash[:notice] = "Wiki was saved."
       redirect_to wikis_path
@@ -24,10 +28,14 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+
   end
 
   def update
     @wiki = Wiki.find(params[:id])
+    @user = current_user
+    
+
     if @wiki.update(wiki_params)
       flash[:notice] = "Wiki was updated."
       redirect_to @wiki

@@ -27,6 +27,7 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'pundit'
 
 group :production do
   gem 'pg'
