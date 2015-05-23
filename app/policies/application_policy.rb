@@ -1,53 +1,33 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :user, :wiki
 
-  def initialize(user, record)
+  def initialize(user, wiki)
     @user = user
-    @record = record
+    @wiki = wiki
   end
 
-  def index?
-    false
+  def can_edit?(wiki)
+    @user || admin?
   end
 
-  def show?
-    scope.where(:id => record.id).exists?
+  def can_destroy?(wiki)
+    true if owns?(wiki) || admin?
   end
 
-  def create?
-    false
+  def owns?(wiki)
+    true if self.id == wiki.user_id
   end
 
-  def new?
-    create?
+  def admin?
+    true if self.role_name == :admin
   end
 
-  def update?
-    user.present? || (record.user == || user.admin?)
+  def role_name
+    User.user_roles.key(self.role)
   end
 
-  def edit?
-    update?
+  def self.user_roles
+    USER_ROLES
   end
 
-  def destroy?
-    update?
-  end
-
-  def scope
-    record.class
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope
-    end
-  end
 end

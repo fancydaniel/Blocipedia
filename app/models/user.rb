@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  # has_one :role
+  # attr_accessor :role
+default_scope { where(:role => "standard") }
+
   attr_accessor :password
   before_save :encrypt_password
 
@@ -8,13 +12,23 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   before_create { generate_token(:auth_token) }
 
-  # def admin?
-  #   role = 'admin'
-  # end
+   USER_ROLES = {
+    admin: "admin",
+    premium: "premium",
+    standard: "standard"
+  }
 
-  # def premium?
-  #   role = 'premium'
-  # end
+  def set_as_admin 
+    self.role = USER_ROLES[:admin]
+  end
+
+  def set_as_premium
+    self.role = USER_ROLES[:premium]
+  end
+
+  def set_as_standard
+    self.role = USER_ROLES[:standard]
+  end
 
   def self.authenticate(email, password)
     user = find_by_email(email)
@@ -44,4 +58,6 @@ class User < ActiveRecord::Base
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
+
+  
 end
