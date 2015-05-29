@@ -1,18 +1,16 @@
 class User < ActiveRecord::Base
-  # has_one :role
-  # attr_accessor :role
-default_scope { where(:role => "standard") }
-
   attr_accessor :password
+
+  after_initialize :set_as_standard
   before_save :encrypt_password
+  before_create { generate_token(:auth_token) }
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
-  before_create { generate_token(:auth_token) }
 
-   USER_ROLES = {
+  USER_ROLES = {
     admin: "admin",
     premium: "premium",
     standard: "standard"
@@ -58,6 +56,4 @@ default_scope { where(:role => "standard") }
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
-
-  
 end

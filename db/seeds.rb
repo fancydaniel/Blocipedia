@@ -7,12 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user1 = User.create!(name: 'Sue Example',
                     email: 'sue@example.com', 
-                    role: 'standard', 
+                    role: 'admin', 
                     password: 'hamburger', 
                     password_confirmation: 'hamburger')
 user2 = User.create!(name: 'Joe Example', 
                     email: 'joe@example.com', 
-                    role: 'admin',
+                    role: 'standard',
                     password: 'hamburger', 
                     password_confirmation: 'hamburger')
 
@@ -23,3 +23,4 @@ user3 = User.create!(name: 'Sam Example',
                     password_confirmation: 'hamburger')
 
 puts "Seeds finished"
+puts "#{User.count} Users created"

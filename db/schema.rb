@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150516205838) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "name"
-    t.string   "role"
+    t.string   "role", default: "standard"
   end
 
   create_table "wikis", force: true do |t|

@@ -22,6 +22,9 @@ class ApplicationController < ActionController::Base
     elsif session[:user_id]
       User.find_by_id(session[:user_id])
     end
+  rescue 
+    cookies.delete(:auth_token)
+    nil
   end
 
   def authorize
