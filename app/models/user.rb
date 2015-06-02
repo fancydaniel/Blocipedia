@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   attr_accessor :password
 
+  has_many :wikis
+  has_many :collaborations
+  has_many :wiki_collaborations, through: :collaborations, source: :wiki
+
   after_initialize :set_as_standard
   before_save :encrypt_password
   before_create { generate_token(:auth_token) }

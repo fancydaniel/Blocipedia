@@ -2,10 +2,13 @@
   <h1>
     <%= @wiki.title %>
     <% if current_user %>
-    <small class="noshow"><%= link_to "Edit", edit_wiki_path(@wiki) %></small>
-    <small class="noshow"><%= link_to "Delete", [@wiki], method: :delete,
-     data:
-          { confirm: 'Are you sure you want to delete this wiki?' }%></small>
+      <div class="symbol">
+        <i class="fa fa-pencil-square-o icon"></i>
+        <small class="noshow"><%= link_to "Edit", edit_wiki_path(@wiki) %></small>
+        <small class="noshow"><%= link_to "Delete", [@wiki], method: :delete,
+         data:
+              { confirm: 'Are you sure you want to delete this wiki?' }%></small>
+      </div>
     <% end %>
   </h1>
 </header>

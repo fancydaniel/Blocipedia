@@ -1,0 +1,6 @@
+<h1>User account</h1>
+<%= current_user.name %> <br />
+<%= current_user.email %>
+
+<p>Account upgrade and access to private wikis, Please click on the link below.</p>
+<%= link_to "Upgrade Account", new_charge_path %>

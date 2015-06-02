@@ -1,5 +1,7 @@
 class Wiki < ActiveRecord::Base
-  has_many :users
+  belongs_to :user 
+  has_many :collaborations
+  has_many :collaborators, through: :collaborations, source: :user
 
   def can_edit?(wiki)
     @user || admin?

@@ -27,6 +27,10 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'faker'
+gem 'stripe'
+gem 'figaro', '1.0'
+gem 'font-awesome-rails'
 
 group :production do
   gem 'pg'

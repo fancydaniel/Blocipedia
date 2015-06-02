@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516205838) do
+ActiveRecord::Schema.define(version: 20150601022624) do
+
+  create_table "collaborations", force: true do |t|
+    t.integer "user_id"
+    t.integer "wiki_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -23,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150516205838) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "name"
-    t.string   "role", default: "standard"
+    t.string   "role"
   end
 
   create_table "wikis", force: true do |t|
