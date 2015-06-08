@@ -1,13 +1,14 @@
 <%= form_tag charges_path do %>
-
+<%= hidden_field_tag :user_id, current_user.id %>
 <article>
   <label class="amount">
     <span>Amount: $15.00</span>
   </label>
 </article>
-  <script src='https://checkout.stripe.com/checkout.js' class='stripe-button'
-          data-key="<%= @stripe_btn_data[:key] %>" 
-          data-amount=<%= @stripe_btn_data[:amount] %>
-          data-description="<%= @stripe_btn_data[:description] %>" > </script>
-
+  <div data-no-turbolink="true">
+    <script src='https://checkout.stripe.com/checkout.js' class='stripe-button'
+            data-key="<%= @stripe_btn_data[:key] %>"
+            data-amount="<%= @stripe_btn_data[:amount] %>"
+            data-description="<%= @stripe_btn_data[:description] %>" ></script>
+  </div>
 <% end %>

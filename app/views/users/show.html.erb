@@ -1,6 +1,13 @@
-<h1>User account</h1>
-<%= current_user.name %> <br />
-<%= current_user.email %>
+<div class="container">
+  <h1 class="italic">User account</h1>
 
-<p>Account upgrade and access to private wikis, Please click on the link below.</p>
-<%= link_to "Upgrade Account", new_charge_path %>
+  <header>
+    <h2><%= current_user.name %>
+      <h5>(<%= current_user.email %>)</h5>
+    </h2>
+  </header>
+  <br />
+  <br />
+  <p>To upgrade your account and gain access to private wikis, please click on the link below.</p>
+  <%= link_to "Upgrade Account", new_charge_path %>
+</div>

@@ -1,7 +1,7 @@
 class ChargesController < ApplicationController
 
   def create
-
+    # raise
     @amount = 1500
 
     # Creates a Stripe Customer object, for associating
@@ -20,7 +20,12 @@ class ChargesController < ApplicationController
       )
 
     flash[:success] = "Thanks you for your purchase, #{current_user.email}!" 
-    redirect_to user_path(current_user) 
+
+    @user = User.find(params[:user_id])  # Idea to upgrade role of user
+    @user.role = "premium"
+    @user.name = "Caitlyn Example"
+    @user.save
+    # redirect_to current_user 
 
     # Stripe will send back CardErrors, with friendly messages
     # when something goes wrong.
@@ -37,6 +42,4 @@ class ChargesController < ApplicationController
       amount: @amount
     }
   end
-
-
 end
