@@ -31,6 +31,7 @@ gem 'faker'
 gem 'stripe'
 gem 'figaro', '1.0'
 gem 'font-awesome-rails'
+gem 'redcarpet'
 
 group :production do
   gem 'pg'

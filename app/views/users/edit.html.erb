@@ -1,0 +1,7 @@
+<h3>Downgrade Account</h3>
+
+<p>Please be aware that if you downgrade from a premium account to a standard account, your private wikis will become public and anyone can collaborate on those wikis you created privately.</p>
+
+<%= form_tag user_path(@user.role), method: :post do %>
+  <%= submit_tag 'Submit', data: { confirm: "Are you sure?" } %>
+<% end %>

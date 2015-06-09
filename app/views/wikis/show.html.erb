@@ -12,4 +12,4 @@
     <% end %>
   </h1>
 </header>
-<p><%= @wiki.body %></p>
+<p><%= markdown_to_html @wiki.body %></p>
