@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-  resources :users do
+  resources :users, only: [:show, :edit] do
     collection do
       get "account" => 'users#show'
     end
@@ -23,6 +23,6 @@ Rails.application.routes.draw do
 
   resources :wikis
 
-  resources :charges, only: [:new, :create]
+  resources :charges, only: [:new, :edit]
  
 end

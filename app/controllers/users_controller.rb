@@ -19,6 +19,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    @user.role = "standard"      # Edit page will direct user to downgrade from premium
+    @user.save
+  end
+
   private
 
   def user_params
