@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   has_many :collaborations
   has_many :wiki_collaborations, through: :collaborations, source: :wiki
 
-  after_initialize :set_as_standard
   before_save :encrypt_password
   before_create { generate_token(:auth_token) }
 
