@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def new
@@ -17,6 +17,12 @@ class UsersController < ApplicationController
     else
       redirect_to sign_up_path, notice: "There was an error. Please try again."
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+    @user.role = "standard"      # Edit page will direct user to downgrade from premium
+    @user.save
   end
 
   private

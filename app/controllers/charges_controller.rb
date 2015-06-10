@@ -21,10 +21,12 @@ class ChargesController < ApplicationController
 
     flash[:success] = "Thanks you for your purchase, #{current_user.email}!" 
 
-    @user = User.find(params[:user_id])  # Idea to upgrade role of user
-    @user.role = "premium"
-    @user.name = "Caitlyn Example"
-    @user.save
+    p current_user.id
+    current_user.update_attributes!( role: 'premium' )
+    # @user = User.find(params[:user_id])  # Idea to upgrade role of user
+    # @user.role = "premium"
+    # @user.name = "Caitlyn Example"
+    # @user.save
     # redirect_to current_user 
 
     # Stripe will send back CardErrors, with friendly messages

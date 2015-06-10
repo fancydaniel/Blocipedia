@@ -11,13 +11,18 @@ Rails.application.routes.draw do
   get 'welcome/about'
 
   root to: 'welcome#index'
-  resources :users
+
+  resources :users, only: [:show, :edit] do
+    collection do
+      get "account" => 'users#show'
+    end
+  end
 
   resources :sessions
   resources :password_resets
 
   resources :wikis
 
-  resources :charges, only: [:new, :create]
+  resources :charges, only: [:new, :edit]
  
 end
