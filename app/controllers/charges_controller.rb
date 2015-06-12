@@ -21,17 +21,11 @@ class ChargesController < ApplicationController
 
     flash[:success] = "Thanks you for your purchase, #{current_user.email}!" 
 
-    p current_user.id
     current_user.update_attributes!( role: 'premium' )
-    # @user = User.find(params[:user_id])  # Idea to upgrade role of user
-    # @user.role = "premium"
-    # @user.name = "Caitlyn Example"
-    # @user.save
-    # redirect_to current_user 
 
     # Stripe will send back CardErrors, with friendly messages
     # when something goes wrong.
-    # This 'rescue block' carches and displays those errors.
+    # This 'rescue block' caches and displays those errors.
   rescue Stripe::CardError => each 
     flash[:error] = e.message
     redirect_to charges_path

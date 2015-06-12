@@ -19,10 +19,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.find(params[:id])
-    @user.role = "standard"      # Edit page will direct user to downgrade from premium
-    @user.save
+  def downgrade
+    current_user.update_attributes!( role: 'standard' )
+    # add a flash notice
+    redirect_to account_users_path
   end
 
   private
