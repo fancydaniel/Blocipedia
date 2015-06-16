@@ -31,6 +31,18 @@ class User < ActiveRecord::Base
     self.role = USER_ROLES[:standard]
   end
 
+  def admin?
+    true if self.role == 'admin'
+  end
+
+  def premium?
+    true if self.role == 'premium'
+  end
+
+  def standard?
+    true if self.role == 'standard'
+  end
+
   def self.authenticate(email, password)
     user = find_by_email(email)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)

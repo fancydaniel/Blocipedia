@@ -3,21 +3,44 @@ class Wiki < ActiveRecord::Base
   has_many :collaborations
   has_many :collaborators, through: :collaborations, source: :user
 
-  def can_edit?(wiki)
-    @user || admin?
+  default_scope { order('updated_at DESC') }
+
+  def self.visible_to(user)
+    if user && user.admin?
+      all
+    elsif user && user.premium? || user.standard?
+      where("user_id = ? OR private = ?", user.id, false)
+    else
+      where(private: false)          
+    end
   end
 
-  def can_destroy?(wiki)
-    true if owns?(wiki) || admin?
+  def can_show?
+    if wiki.public?
+      current_user
+    else
+      'admin' || wiki.user_id
+    end
+    # wiki.public? || wiki.user_id
+  end
+
+  def can_edit?(wiki)
+    if wiki.public?
+      current_user || admin?
+    else
+      wiki.user_id
+    end
   end
 
   def owns?(wiki)
     true if self.id == wiki.user_id
   end
 
-  def admin?
-    true if self.role_name == :admin
+  def can_destroy?(wiki)
+    true if owns?(wiki) || admin?
   end
+
+  
 
   def role_name
     User.user_roles.key(self.role)

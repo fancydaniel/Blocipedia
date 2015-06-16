@@ -1,6 +1,6 @@
 
 <header>
-  <h1><span class="italic">My Wikis</span>
+  <h1><span class="italic">Wikis</span>
     <div class="symbol">
     <i class="fa fa-ellipsis-v icon"></i>
     <small class="noshow"><%= link_to "New", new_wiki_path %></small>
@@ -16,12 +16,17 @@
       <th class="secondary">Delete</th>
     </tr>
     <% @wikis.each do |wiki| %>
-    <tr>
-      <td ><h3><%= link_to wiki.title, wiki %></h3></td>
-        <td class="vertical-align"><%= link_to "Edit", edit_wiki_path(wiki) if current_user %></td>
-        <td class="vertical-align"><%= link_to "Delete", [wiki], method: :delete, data:
-          { confirm: 'Are you sure you want to delete this wiki?' } if current_user %></td>
-    </tr>
+      <%# if wiki.private == 'true' && (current_user == 'premium' || current_user == 'admin') %>
+
+      <tr>
+        <td ><h3><%= link_to wiki.title, wiki %></h3></td>
+          <td class="vertical-align"><%= link_to "Edit", edit_wiki_path(wiki) if current_user %></td>
+          <td class="vertical-align"><%= link_to "Delete", [wiki], method: :delete, data:
+            { confirm: 'Are you sure you want to delete this wiki?' } if current_user %></td>
+      </tr>
+      <%# elsif wiki.private == 'false' && current_user %>
+      
+      <%# end %>
     <% end %>
   </table>
 

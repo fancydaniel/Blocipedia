@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(version: 20150601022624) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "name"
-    t.string   "role"
+    t.string   "role", default: 'standard'
   end
 
   create_table "wikis", force: true do |t|
     t.string   "title"
     t.text     "body"
-    t.boolean  "private"
+    t.boolean  "private", default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

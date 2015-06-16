@@ -10,6 +10,15 @@
           <%= f.label :body, class: "label_ body_" %>
           <%= f.text_area :body, class: "input text-area" %>
           <br />
+
+          <% if current_user.role == 'admin' || current_user.role == 'premium' %>
+            <div class="form-group">
+              <%= f.label :private, class: 'label_2' do %>
+                <%= f.check_box :private, class: "checkbox" %>Private wiki
+              <% end %>
+            </div>
+          <% end %>
+
           <%= f.submit "Save", class: "d_button" %>
         <% end %>
       </div>

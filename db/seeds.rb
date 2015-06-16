@@ -1,48 +1,60 @@
 require 'faker'
 
-user1 = User.create!(
+admin_user = User.create!(
   name: 'Sue Example',
   email: 'sue@example.com', 
   role: 'admin', 
   password: 'hamburger', 
   password_confirmation: 'hamburger')
-user1.save!
+admin_user.save!
 
-user2 = User.create!(
+standard_user = User.create!(
   name: 'Joe Example', 
   email: 'joe@example.com', 
   role: 'standard',
   password: 'hamburger', 
   password_confirmation: 'hamburger')
-user2.save!
+standard_user.save!
 
-user3 = User.create!(
+premium_user = User.create!(
   name: 'Sam Example', 
   email: 'sam@example.com',
   role: 'premium',
   password: 'hamburger', 
   password_confirmation: 'hamburger')
-user3.save!
+premium_user.save!
 
-# 3.times do
-#     user = User.new(
-#                name:     Faker::Name.name,
-#                email:    Faker::Internet.email,
-#                password: 'hamburger'   
-#                )
-# user.save!
-# end
 users = User.all
 
-# Create Wikis
-12.times do
+# Create Public Wikis
+12.times do |n|
+  user = users.sample
   Wiki.create!(
-    title:    Faker::Lorem.sentence,
+    title:    "Public-#{user.name}-#{n}",
     body:     Faker::Lorem.paragraph,
     user:     users.sample
   )
 end
 
+# Create Private Wikis for premium user
+4.times do |n|
+  Wiki.create!(
+    title:    "Private-#{premium_user.name}-#{n}",
+    body:     Faker::Lorem.paragraph,
+    user:     premium_user,
+    private:  true 
+  )
+end
+
+# Create Private Wikis for admin user
+4.times do |n|
+  Wiki.create!(
+    title:    "Private-#{admin_user.name}-#{n}",
+    body:     Faker::Lorem.paragraph,
+    user:     admin_user,
+    private:  true 
+  )
+end
 
 puts "Seeds finished"
 puts "#{User.count} Users created"
