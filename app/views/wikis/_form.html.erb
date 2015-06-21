@@ -16,11 +16,23 @@
               <%= f.label :private, class: 'label_2' do %>
                 <%= f.check_box :private, class: "checkbox" %>Private wiki
               <% end %>
+
             </div>
           <% end %>
 
           <%= f.submit "Save", class: "d_button" %>
         <% end %>
+
+        <%= form_tag collaborations_path do %>
+          <%= hidden_field_tag :wiki_id, @wiki.id %>
+          <%= select_tag :user_id, options_from_collection_for_select(@users, :id, :name, 0), include_blank: true %>
+          <%= submit_tag "Add collaborator" %>
+        <% end %>
+
+        <% @collaborators.each do |collaborator| %>
+          <p><%= collaborator.email %></p>
+        <% end %>
+
       </div>
     </div>
   </div>

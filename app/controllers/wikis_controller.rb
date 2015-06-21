@@ -2,6 +2,7 @@ class WikisController < ApplicationController
 
   def index
     @wikis = Wiki.visible_to(current_user)
+    @collaborations = Collaboration.where(:user_id == current_user.id)
   end
 
   def show
@@ -27,7 +28,8 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
-
+    @users = User.all
+    @collaborators = @wiki.collaborators
   end
 
   def update

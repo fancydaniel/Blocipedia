@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :password_resets
 
   resources :wikis
+  resources :collaborations, only: [:create, :destroy, :edit, :update]
 
   resources :charges, only: [:new, :edit]
  

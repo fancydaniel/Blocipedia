@@ -6,9 +6,9 @@ class Wiki < ActiveRecord::Base
   default_scope { order('updated_at DESC') }
 
   def self.visible_to(user)
-    if user && user.admin?
+    if user && user.admin? 
       all
-    elsif user && user.premium? || user.standard?
+    elsif user && user.premium? || user.standard? # || user.include?
       where("user_id = ? OR private = ?", user.id, false)
     else
       where(private: false)          
@@ -19,14 +19,13 @@ class Wiki < ActiveRecord::Base
     if wiki.public?
       current_user
     else
-      'admin' || wiki.user_id
+      'admin' || wiki.user_id # || user.include?
     end
-    # wiki.public? || wiki.user_id
   end
 
   def can_edit?(wiki)
     if wiki.public?
-      current_user || admin?
+      current_user || admin? # || user.include?
     else
       wiki.user_id
     end
@@ -39,8 +38,6 @@ class Wiki < ActiveRecord::Base
   def can_destroy?(wiki)
     true if owns?(wiki) || admin?
   end
-
-  
 
   def role_name
     User.user_roles.key(self.role)

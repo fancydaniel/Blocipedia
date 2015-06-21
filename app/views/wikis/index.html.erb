@@ -16,17 +16,12 @@
       <th class="secondary">Delete</th>
     </tr>
     <% @wikis.each do |wiki| %>
-      <%# if wiki.private == 'true' && (current_user == 'premium' || current_user == 'admin') %>
-
       <tr>
         <td ><h3><%= link_to wiki.title, wiki %></h3></td>
           <td class="vertical-align"><%= link_to "Edit", edit_wiki_path(wiki) if current_user %></td>
           <td class="vertical-align"><%= link_to "Delete", [wiki], method: :delete, data:
             { confirm: 'Are you sure you want to delete this wiki?' } if current_user %></td>
       </tr>
-      <%# elsif wiki.private == 'false' && current_user %>
-      
-      <%# end %>
     <% end %>
   </table>
 
