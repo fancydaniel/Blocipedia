@@ -15,16 +15,18 @@ class CollaborationsController < ApplicationController
     end
   end
 
-  def edit
-    
-  end
-
-  def update
-   
-  end
-
   def destroy
-   
+    @user = User.find_by(email: params[:email])
+    @wiki = Wiki.find(params[:id])
+    @collaboration = Collaboration.where(user: @user, wiki: @wiki).take
+
+    if @collaboration.destroy
+      flash[:notice] = "Collaboration was removed."
+      redirect_to edit_wiki_path(@wiki)
+    else
+      flash[:error] = "There was an error please try again."
+      redirect_to edit_wiki_path(@wiki)
+    end
   end
 
 

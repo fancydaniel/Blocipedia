@@ -30,7 +30,9 @@
         <% end %>
 
         <% @collaborators.each do |collaborator| %>
-          <p><%= collaborator.email %></p>
+          <p><%= collaborator.email %>  <%= link_to "Remove", collaboration_path(@wiki, @collaborator, email: collaborator.email), method: :delete,
+         data:
+              { confirm: 'Are you sure you want to remove this collaborator?' }%></p>
         <% end %>
 
       </div>

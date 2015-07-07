@@ -19,13 +19,13 @@ class Wiki < ActiveRecord::Base
     if wiki.public?
       current_user
     else
-      'admin' || wiki.user_id # || user.include?
+      'admin' || wiki.user_id 
     end
   end
 
   def can_edit?(wiki)
     if wiki.public?
-      current_user || admin? # || user.include?
+      current_user || admin? 
     else
       wiki.user_id
     end
