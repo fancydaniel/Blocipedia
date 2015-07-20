@@ -10,15 +10,14 @@ class CollaborationsController < ApplicationController
       flash[:notice] = "Collaborator was successfully added"
       redirect_to edit_wiki_path(@wiki)
     else
-      flash[:error] = "There was an error adding a collaborator. Please try again."
+      flash[:error] = @collaboration.errors.full_messages.to_sentence
       redirect_to edit_wiki_path(@wiki)
     end
   end
 
   def destroy
-    @user = User.find_by(email: params[:email])
-    @wiki = Wiki.find(params[:id])
-    @collaboration = Collaboration.where(user: @user, wiki: @wiki).take
+    @collaboration = Collaboration.find(params[:id])
+    @wiki = @collaboration.wiki
 
     if @collaboration.destroy
       flash[:notice] = "Collaboration was removed."

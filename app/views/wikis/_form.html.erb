@@ -29,10 +29,10 @@
           <%= submit_tag "Add collaborator" %>
         <% end %>
 
-        <% @collaborators.each do |collaborator| %>
-          <p><%= collaborator.email %>  <%= link_to "Remove", collaboration_path(@wiki, @collaborator, email: collaborator.email), method: :delete,
+        <% @collaborations.each do |collaboration| %>
+          <p><%= collaboration.email %>  <%= link_to "Remove", collaboration_path(collaboration), method: :delete,
          data:
-              { confirm: 'Are you sure you want to remove this collaborator?' }%></p>
+              { confirm: 'Are you sure you want to remove this collaborator?' } %></p>
         <% end %>
 
       </div>

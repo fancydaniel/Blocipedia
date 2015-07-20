@@ -19,6 +19,12 @@ class User < ActiveRecord::Base
     standard: "standard"
   }
 
+  def self.possible_collaborators(wiki)
+    owner = eager_load(:wikis).where.not('wikis.user_id = ?', wiki.user_id)
+    col = eager_load(:collaborations).where('collaborations.wiki_id == ?', wiki.id)
+    owner - col
+  end
+
   def set_as_admin 
     self.role = USER_ROLES[:admin]
   end
