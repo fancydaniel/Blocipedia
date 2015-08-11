@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-  resources :users, only: [:show, :edit] do
+  resources :users, only: [:show, :edit, :create] do
     collection do
       get "account" => 'users#show'
     end
