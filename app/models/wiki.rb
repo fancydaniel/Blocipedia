@@ -8,7 +8,7 @@ class Wiki < ActiveRecord::Base
   def self.visible_to(user)
     if user && user.admin? 
       all
-    elsif user && user.premium? || user.standard? # || user.include?
+    elsif user 
       where("user_id = ? OR private = ?", user.id, false)
     else
       where(private: false)          

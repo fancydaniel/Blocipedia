@@ -2,7 +2,7 @@ class WikisController < ApplicationController
 
   def index
     @wikis = Wiki.visible_to(current_user)
-    @collaborations = Collaboration.where(:user_id == current_user.id)
+    @collaborations = Collaboration.where(:user_id == current_user.id) if current_user
   end
 
   def show
